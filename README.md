@@ -1,5 +1,5 @@
 # SDM_biomod2
-Scripts with comments in Portuguese for performing Species Distribution Models (SDM) using MaxEnt in 'biomod2' package
+Scripts with comments in Portuguese for performing Species Distribution Models (SDM) with MaxEnt in 'biomod2' package
 
 
 #######################   PASSO-A-PASSO DOS SDM  #########################
