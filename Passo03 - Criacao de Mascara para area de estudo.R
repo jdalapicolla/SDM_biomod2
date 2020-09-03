@@ -4,7 +4,7 @@
 ####          AULA PRATICA DE MODELOS DE DISTRIBUIÇÃO DE ESPECIES (SDM)         ####
 ####               CONSTRUCAO DA MASCARA PARA A AREA DE ESTUDO                  ####
 
-#### Scripts by Jeronymo Dalapicolla and Jamille Viega ####
+#### Scripts by Jeronymo Dalapicolla ####
 
 ####### OBJETIVOS: CONSTRUCAO DA MASCARA PARA A AREA DE ESTUDO
 #######               A. Baseado em um shapefile previo
