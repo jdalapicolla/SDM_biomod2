@@ -4,7 +4,7 @@
 ####          AULA PRATICA DE MODELOS DE DISTRIBUIÇÃO DE ESPECIES (SDM)         ####
 ####                   PADRONIZACAO DOS DADOS AMBIENTAIS                        ####
 
-#### Scripts by Jeronymo Dalapicolla and Jamille Viega ####
+#### Scripts by Jeronymo Dalapicolla ####
 
 ####### OBJETIVOS: PREPARAR AS VARIÁVEIS AMBIENTAIS PARA INPUT DOS MODELOS
 #######               A. Cortar as rasters usando uma mascara
