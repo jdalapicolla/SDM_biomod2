@@ -4,7 +4,7 @@
 ####          AULA PRATICA DE MODELOS DE DISTRIBUIÇÃO DE ESPÉCIES (SDM)         ####
 ####        FILTRAGEM DOS PONTOS PARA REDUCAO DE AUTOCORRELACAO ESPACIAL        ####
 
-#### Scripts by Jeronymo Dalapicolla and Jamille Viega ####
+#### Scripts by Jeronymo Dalapicolla ####
 
 ####### OBJETIVOS: FILTRAR OS PONTOS DE OCORRENCIA PARA REDUZIR A AUTOCORRELACAO ESPACIAL
 #######               A. Remover pontos duplicados
