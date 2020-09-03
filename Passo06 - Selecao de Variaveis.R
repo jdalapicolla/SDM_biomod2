@@ -4,7 +4,7 @@
 ####          AULA PRATICA DE MODELOS DE DISTRIBUIÇÃO DE ESPÉCIES (SDM)         ####
 ####  SELEÇÃO DE VARIAVEIS AMBIENTAIS PARA REDUCAO DE AUTOCORRELACAO AMBIENTAL  ####
 
-#### Scripts by Jeronymo Dalapicolla and Jamille Viega ####
+#### Scripts by Jeronymo Dalapicolla ####
 
 ####### OBJETIVOS: SELEÇÃO DE VARIAVEIS AMBIENTAIS
 #######               A. Extrair os valores das camadas ambientais
