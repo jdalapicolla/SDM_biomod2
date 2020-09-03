@@ -4,7 +4,7 @@
 ####          AULA PRATICA DE MODELOS DE DISTRIBUIÇÃO DE ESPECIES (SDM)         ####
 ####                    RODAR O MAXENT DENTRO DO BIOMOD2                        ####
 
-#### Scripts by Jeronymo Dalapicolla and Jamille Viega ####
+#### Scripts by Jeronymo Dalapicolla ####
 
 ####### OBJETIVO: CRIAR OS MODELOS DE DISTRIBUICAO DE ESPÉCIES NO MAXENT DENTRO DO PACOTE BIOMOD2
 
