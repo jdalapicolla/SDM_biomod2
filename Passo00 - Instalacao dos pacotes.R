@@ -4,7 +4,7 @@
 ####          AULA PRATICA DE MODELOS DE DISTRIBUIÇÃO DE ESPÉCIES (SDM)         ####
 ####          INSTALACAO AUTOMATICA DOS PACOTES E SOFTWARES NECESSARIOS         ####
 
-#### Scripts by Jeronymo Dalapicolla and Jamille Viega ####
+#### Scripts by Jeronymo Dalapicolla ####
 
 ####### OBJETIVOS: INSTALAR OS PACOTES DE R E BAIXAR O ARQUIVO DO MAXENT
 
