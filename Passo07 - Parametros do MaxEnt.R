@@ -4,7 +4,7 @@
 ####          AULA PRATICA DE MODELOS DE DISTRIBUIÇÃO DE ESPECIES (SDM)         ####
 ####                    ESCOLHA DOS PARAMETROS DO MAXENT                        ####
 
-#### Scripts by Jeronymo Dalapicolla and Jamille Viega ####
+#### Scripts by Jeronymo Dalapicolla ####
 
 ####### OBJETIVO: ESCOLHER QUAIS FEATURE CLASS E PARAMETRO DE REGULARIZAÇÃO SÃO IDEAIS PARA O NOSSO CONJUNTO DE DADOS
 
