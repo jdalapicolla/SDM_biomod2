@@ -21,13 +21,26 @@ library(rgdal)
 library(raster)
 
 #delimitar uma projecao espacial para lat/long e para UTM:
-longlat_WGS = CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
-UTM_proj = CRS("+proj=utm +zone=22 +south +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
+#Verificar a projeção 
+rgdal::rgdal_extSoftVersion()
 
-#ou criar uma a partir de codigo EPGS
-A = make_EPSG() 
-LL_prj = as.character(subset(A, A$code=="4326")[3]) 
+#Para GDAL >3 e PROJ >6
+(longlat_WGS = CRS("+init=epsg:4326"))
+cat(strwrap(gsub(",", ", ", (comment(longlat_WGS)))), sep="\n")
+LL_prj
+
+(UTM_prj = CRS("+init=epsg:5383"))
+cat(strwrap(gsub(",", ", ", (comment(UTM_prj)))), sep="\n")
+UTM_prj
+
+
+#ou  GDAL <3 e PROJ <6
+A = rgdal::make_EPSG() 
+longlat_WGS = as.character(subset(A, A$code=="4326")[3]) 
 UTM_prj = as.character(subset(A, A$code=="5383")[3]) 
+
+
+ 
 
 
 
