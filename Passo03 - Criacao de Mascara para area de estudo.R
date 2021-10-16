@@ -30,11 +30,11 @@ library(sampSurf)
 rgdal::rgdal_extSoftVersion()
 
 #Para GDAL >3 e PROJ >6
-(longlat_WGS <- CRS("+init=epsg:4326"))
-cat(strwrap(gsub(",", ", ", (comment(LL_prj)))), sep="\n")
+(longlat_WGS = CRS("+init=epsg:4326"))
+cat(strwrap(gsub(",", ", ", (comment(longlat_WGS)))), sep="\n")
 LL_prj
 
-(UTM_prj <- CRS("+init=epsg:5383"))
+(UTM_prj = CRS("+init=epsg:5383"))
 cat(strwrap(gsub(",", ", ", (comment(UTM_prj)))), sep="\n")
 UTM_prj
 
@@ -42,8 +42,7 @@ UTM_prj
 #ou  GDAL <3 e PROJ <6
 A = rgdal::make_EPSG() 
 longlat_WGS = as.character(subset(A, A$code=="4326")[3]) 
-UTM_prj = as.character(subset(A, A$code=="5383")[3]) 
-
+UTM_prj = as.character(subset(A, A$code=="5383")[3])
 
 
 
