@@ -12,15 +12,17 @@
 
 
 
+
 ############### 1. INSTALACAO DOS PACOTES E CARREGAR AS FUNCOES AUXILIARES #########
 # Carregar os pacotes necessarios:
-library(rJava)
+#library(rJava)
 library(dismo)
 library(ENMeval)
 library(plyr)
 library(raster)
 library(rgdal)
 library(parallel)
+library(randomForest)
 
 ## É necessário copiar o arquivo "maxent.jar" na pasta 'R/x86_64-pc-linux-gnu-library/3.6/dismo/java/'. Você já deve ter feito isso no passo 00B. Rode o comando abaixo para ver se você fez corretamente:
   jar = paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
@@ -35,16 +37,14 @@ options(java.parameters = "-Xmx5g") #5GB
 
 
 
-
-
 ######################## 2. CARREGAR OS ARQUIVOS NECESSARIOS #######################
 #carregar os pontos de ocorrencia corrigidos e filtrados, após o passo 5. O arquivo só pode ter as colunas lat e long
-ocorrencia = read.csv("./pontos/psimonsi_corrigido.csv")
+ocorrencia = read.csv("steerei/points/points_filtered_ste.csv")
 head(ocorrencia)
 length(ocorrencia[,1]) #47 pontos
 
 #carregar as variaveis selecionadas no passo 6. Criar umas para separada para elas:
-camadas = list.files(path="./asc_presente/selecionadas", pattern =".asc", full.names=TRUE)
+camadas = list.files(path="./steerei/vif_manual", pattern =".asc", full.names=TRUE)
 camadas = stack(camadas)
 camadas #verificar se as camadas foram carregadas corretamente
 
@@ -54,11 +54,29 @@ bg_pnts = randomPoints(camadas, n = 10000)
 
 
 
+######################### 3. ESCOLHER OS PARÂMETROS DO RF ###########################
+#extrair os valores dos pontos de ocorrência e dos pontos de fundo das camadas:
+bg = raster::extract(camadas, bg_pnts)
+bfc = raster::extract(camadas, ocorrencia)
 
-######################### 3. RODAR A FUNCAO ENMevaluate  ###########################
+#criar um único dataframe, 1 para pontos de presença, 0 para pontos de fundo.
+d = rbind(cbind(pa=1, bfc), cbind(pa=0, bg))
+d = data.frame(d)
+dim(d)
+
+# escolher o valor de mtry a partir do número de trees, maior que 1000
+trf = tuneRF(d[, 2:ncol(d)], d[, 'pa'], ntreeTry=2000,
+              stepFactor=1.5,improve=0.01, trace=TRUE, plot=TRUE)
+
+
+
+
+
+
+######################### 4. RODAR A FUNCAO ENMevaluate  ###########################
 #testar os seguintes parametros:
-FC = c("L", "LQ", "H", "LQH") #feature class
-RM = seq(0.5, 2, 0.5) #beta/regularizacao
+FC = c("L", "LQ", "H", "LQH", "LQHP", "LQHPT") #feature class
+RM = seq(0.5, 3, 0.5) #beta/regularizacao
 
 #Valores aceitaveis para fc são: L=linear, Q=quadratic, P=product, T=threshold, e H=hinge
 #4 FC e 4 valores de RM demoraram 5 min usando Maxent, e no Maxnet trava depois de 15 min.
@@ -88,29 +106,29 @@ EVALme = ENMevaluate (ocorrencia,
                       bg.coords = bg_pnts,
                       RMvalues = RM,
                       fc = FC,
-                     # algorithm = "maxent.jar",
+                      # algorithm = "maxent.jar",
                       method = "block",
                       clamp = FALSE,
                       overlap= FALSE,
                       rasterPreds = TRUE,
                       progbar  = TRUE,
                       parallel = TRUE,
-                      numCores = 4)
+                      numCores = 3)
 
 #verificar os resultados:
 EVALme
 
 #salvar o objeto como Rdata/rds
-saveRDS(EVALme, file = "./Resultados/ParametrosMaxEnt_psimonsi.rds")
+saveRDS(EVALme, file = "./ParametrosMaxEnt_steerei_vifmanual.rds")
 
 #carregar o arquivo RDS se for necessário
-EVALme = readRDS("./Resultados/ParametrosMaxEnt_psimonsi.rds")
+EVALme = readRDS("./ParametrosMaxEnt_steerei_vifmanual.rds")
 
 
 
 
 
-#### 4. ESCOLHER OS MELHORES VALORES DE FEATURE CLASS AND REGULARIZACAO (BETA) #####
+#### 5. ESCOLHER OS MELHORES VALORES DE FEATURE CLASS AND REGULARIZACAO (BETA) #####
 #Resultados da performance dos modelos:
 EVALme@results
 
@@ -122,7 +140,7 @@ best_models = res[res$delta.AICc<2  & !is.na(res$delta.AICc), ]
 best_models
 
 #save the table
-write.csv(best_models, file="Resultados/Melhores_Parametros_MaxEnt_psimonsi.csv", row.names = F)
+write.csv(best_models, file="./Melhores_Parametros_MaxEnt_steerei_vifmanual.csv", row.names = F)
 
 
 ##END
