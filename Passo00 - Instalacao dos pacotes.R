@@ -12,55 +12,29 @@
 
 #### 1. INSTALAÇÃO AUTOMATICA DOS PACOTES EM R NECESSÁRIOS ####
 #executar os comandos abaixo para verificar se os pacotes já foram instalados. Se um pacote não foi instalado, ele será instalado automaticamente:
+#Pacotes básicos para instalar outros pacotes:
+if (!require('remotes'))      install.packages('remotes');           library('remotes')
+if (!require('BiocManager'))  install.packages('BiocManager');       library('BiocManager')
+if (!require('pacman'))       install.packages('pacman');            library('pacman')
+if (!require('devtools'))     install.packages('devtools');          library('devtools')
 
-if("devtools" %in% rownames(installed.packages()) == FALSE){install.packages("devtools")
-} else {print (paste0("'devtools' já está instalado na biblioteca dessa versão do R"))}
-
-if("biomod2" %in% rownames(installed.packages()) == FALSE){install.packages("biomod2")
-} else {print (paste0("'biomod2' já está instalado na biblioteca dessa versão do R"))}
-
-if("dismo" %in% rownames(installed.packages()) == FALSE){install.packages("dismo")
-} else {print (paste0("'dismo' já está instalado na biblioteca dessa versão do R"))}
-
-if("ENMeval" %in% rownames(installed.packages()) == FALSE){install.packages("ENMeval")
-} else {print (paste0("'ENMeval' já está instalado na biblioteca dessa versão do R"))}
-
-if("maptools" %in% rownames(installed.packages()) == FALSE){install.packages("maptools")
-} else {print (paste0("'maptools' já está instalado na biblioteca dessa versão do R"))}
-
-if("parallel" %in% rownames(installed.packages()) == FALSE){install.packages("parallel")
-} else {print (paste0("'parallel' já está instalado na biblioteca dessa versão do R"))}
-
-if("plyr" %in% rownames(installed.packages()) == FALSE){install.packages("plyr")
-} else {print (paste0("'plyr' já está instalado na biblioteca dessa versão do R"))}
-
-if("raster" %in% rownames(installed.packages()) == FALSE){install.packages("raster")
-} else {print (paste0("'raster' já está instalado na biblioteca dessa versão do R"))}
-
-if("rgdal" %in% rownames(installed.packages()) == FALSE){install.packages("rgdal")
-} else {print (paste0("'rgdal' já está instalado na biblioteca dessa versão do R"))}
-
-if("rgeos" %in% rownames(installed.packages()) == FALSE){install.packages("rgeos")
-} else {print (paste0("'rgeos' já está instalado na biblioteca dessa versão do R"))}
-
-if("rJava" %in% rownames(installed.packages()) == FALSE){install.packages("rJava")
-} else {print (paste0("'rJava' já está instalado na biblioteca dessa versão do R"))}
-
-if("sampSurf" %in% rownames(installed.packages()) == FALSE){install.packages("sampSurf")
-} else {print (paste0("'sampSurf' já está instalado na biblioteca dessa versão do R"))}
-
-if("sp" %in% rownames(installed.packages()) == FALSE){install.packages("sp")
-} else {print (paste0("'sp' já está instalado na biblioteca dessa versão do R"))}
-
-if("tidyverse" %in% rownames(installed.packages()) == FALSE){install.packages("tidyverse")
-} else {print (paste0("'tidyverse' já está instalado na biblioteca dessa versão do R"))}
-
-if("usdm" %in% rownames(installed.packages()) == FALSE){install.packages("usdm")
-} else {print (paste0("'usdm' já está instalado na biblioteca dessa versão do R"))}
-
-if("vegan" %in% rownames(installed.packages()) == FALSE){install.packages("vegan")
-} else {print (paste0("'vegan' já está instalado na biblioteca dessa versão do R"))}
-
+#Pacotes do CRAN R:
+if (!require('tidyverse'))     install.packages("tidyverse");        library('tidyverse')
+if (!require('biomod2'))       install.packages("biomod2");          library('biomod2')
+if (!require('dismo'))         install.packages("dismo");            library('dismo')
+if (!require('ENMeval'))       install.packages("ENMeval");          library('ENMeval')
+if (!require('maptools'))      install.packages("maptools");         library('maptools')
+if (!require('plyr'))          install.packages("plyr");             library('plyr')
+if (!require('rgdal'))         install.packages("rgdal");            library('rgdal')
+if (!require('raster'))        install.packages("raster");           library('raster')
+if (!require('sf'))            install.packages("sf");               library('sf')
+if (!require('rgeos'))         install.packages('rgeos');            library('rgeos')
+if (!require('rJava'))         install.packages('rJava');            library('rJava')
+if (!require('sampSurf'))      install.packages('sampSurf');         library('sampSurf')
+if (!require('sp'))            install.packages('sp');               library('sp')
+if (!require('usdm'))          install.packages('usdm');             library('usdm')
+if (!require('vegan'))         install.packages('vegan');            library('vegan')
+if (!require('rangeBuilder'))  install.packages('rangeBuilder');     library('rangeBuilder')
 
 
 #verificar se todos os pacotes estão careegando:
@@ -79,7 +53,8 @@ library(sp)
 library(tidyverse)
 library(usdm)
 library(vegan)
-
+library(rangeBuilder)
+library(sf)
 
 
 
